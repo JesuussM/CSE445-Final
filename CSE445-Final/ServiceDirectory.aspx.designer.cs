@@ -11,7 +11,7 @@ namespace CSE445_Final
 {
 
 
-    public partial class Default
+    public partial class ServiceDirectory
     {
 
         /// <summary>

@@ -16,10 +16,10 @@
             <span class="navbar-brand mb-0 h1">Group 31 Web App</span>
             <div class="navbar-collapse">
               <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link disabled" href="#">Service Directory</a>
-                <a class="nav-link disabled" href="#">Member</a>
-                <a class="nav-link disabled" href="#">Staff</a>
+                <asp:HyperLink ID="lnkHome" CssClass="nav-link active" Text="Home" NavigateUrl="~/Default.aspx" runat="server" />
+                <asp:HyperLink ID="lnkServiceDirectory" CssClass="nav-link" Text="Service Directory" NavigateUrl="~/ServiceDirectory.aspx" runat="server" />
+                <asp:HyperLink ID="lnkMember" CssClass="nav-link" Text="Member" NavigateUrl="~/Member.aspx" runat="server" />
+                <asp:HyperLink ID="lnkStaff" CssClass="nav-link" Text="Staff" NavigateUrl="~/Staff.aspx" runat="server" />
               </div>
             </div>
           </div>
@@ -52,7 +52,14 @@
                          <div class="card-body">
                              <h5 class="card-title">How to test application:</h5>
                              <p class="card-text">
-                                 TODO: Add testing instructions here.
+                                 <strong>CAPTCHA Service:</strong> To test the CAPTCHA service, you can try signing 
+                                 up with a new username and password. If you enter the correct CAPTCHA text, the account
+                                 should be created successfully. If you enter the wrong CAPTCHA text, you should see an 
+                                 error message saying the CAPTCHA has failed. You can also click the "Generate new image"
+                                 button to get a new image.
+                             </p>
+                             <p class="card-text">
+                                 TODO: Add more testing instructions for the other services once they are implemented.
                              </p>
                          </div>
                      </div>
