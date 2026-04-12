@@ -43,13 +43,23 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">*Member responsible for component*</th>
-                                <td>(WSDL service, RESTful service, DLL function, user control, etc.)</td>
-                                <td>*Operation name*</td>
-                                <td>*Parameters and their types*</td>
-                                <td>*Return type*</td>
-                                <td>*Function description*</td>
-                                <td>*Link to TryIt page*</td>
+                                <th scope="row">Jesus Miranda</th>
+                                <td>Restful</td>
+                                <td>CAPTCHA Service</td>
+                                <td>
+                                    <ul>
+                                        <li>Length (string)</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Image (base64 string)</li>
+                                    </ul>
+                                </td>
+                                <td>Image Verifier</td>
+                                <td>
+                                    <a href="https://venus.sod.asu.edu/WSRepository/Services/ImageVerifierSvc/TryIt.aspx">TryIt</a>
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">*Member responsible for component*</th>

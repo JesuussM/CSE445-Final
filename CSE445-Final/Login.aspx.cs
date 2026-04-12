@@ -20,6 +20,13 @@ namespace CSE445_Final
             {
                 Response.Redirect(FormsAuthentication.DefaultUrl);
             }
+            else
+            {
+                lblLoginError.Visible = false;
+                lblSignUpError.Visible = false;
+
+                imgCaptcha.ImageUrl = "~/ImageProcess.aspx";
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -69,10 +76,20 @@ namespace CSE445_Final
             }
         }
 
+        protected void btnCaptcha_Click(object sender, EventArgs e)
+        {
+            CAPTCHAService.ServiceClient fromService = new CAPTCHAService.ServiceClient("BasicHttpBinding_IService");
+            string userLength = "5";
+            Session["userLength"] = userLength;
+            String myString = fromService.GetVerifierString(userLength);
+            Session["generatedString"] = myString;
+        }
+
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
             string newUser = txtNewUser.Text.Trim();
             string newPass = txtNewPassword.Text;
+            string captcha = txtCaptcha.Text.Trim();
 
             lblSignUpError.Visible = false;
 
@@ -80,6 +97,12 @@ namespace CSE445_Final
             if (string.IsNullOrWhiteSpace(newUser) || string.IsNullOrWhiteSpace(newPass))
             {
                 lblSignUpError.Text = "Username and password are required.";
+                lblSignUpError.Visible = true;
+                return;
+            }
+            else if (string.IsNullOrWhiteSpace(captcha))
+            {
+                lblSignUpError.Text = "Complete the CAPTCHA";
                 lblSignUpError.Visible = true;
                 return;
             }
@@ -103,6 +126,14 @@ namespace CSE445_Final
                             return;
                         }
 
+                        if (!Session["generatedString"].Equals(captcha))
+                        {
+                            lblSignUpError.Text = "CAPTCHA Verification failed.";
+                            lblSignUpError.Visible = true;
+                            txtCaptcha.Text = "";
+                            return;
+                        }
+
                         string hashed = HashPassword(newPass);
 
                         var user = new XElement("User",
@@ -118,6 +149,7 @@ namespace CSE445_Final
                         lblSignUpError.Visible = true;
                         txtNewUser.Text = "";
                         txtNewPassword.Text = "";
+                        txtCaptcha.Text = "";
                     }
                     else
                     {

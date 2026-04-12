@@ -44,6 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,10 +70,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Users.xml" />
+    <None Include="Connected Services\CAPTCHAService\Service.disco" />
+    <None Include="Connected Services\CAPTCHAService\configuration91.svcinfo" />
+    <None Include="Connected Services\CAPTCHAService\configuration.svcinfo" />
+    <None Include="Connected Services\CAPTCHAService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="ImageProcess.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Member.aspx" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -80,6 +90,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\CAPTCHAService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -89,6 +104,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ImageProcess.aspx.cs">
+      <DependentUpon>ImageProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImageProcess.aspx.designer.cs">
+      <DependentUpon>ImageProcess.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -121,6 +143,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\CAPTCHAService\Service.wsdl" />
+    <None Include="Connected Services\CAPTCHAService\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CAPTCHAService\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CAPTCHAService\Service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -129,7 +161,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CAPTCHAService\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

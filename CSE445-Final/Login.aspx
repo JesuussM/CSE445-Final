@@ -38,6 +38,19 @@
                             <label for="txtNewPassword" class="form-label">Password</label>
                             <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" CssClass="form-control" Placeholder="Enter Password..." />
                         </div>
+                        <div class="container-fluid mb-3">
+                            <div class="row mb-1">
+                                <div class="col p-0">
+                                    <asp:Image ID="imgCaptcha" runat="server" />
+                                </div>
+                                <div class="col-8 p-0">
+                                    <asp:TextBox ID="txtCaptcha" runat="server" CssClass="form-control" Placeholder="Enter CAPTCHA..." />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <asp:Button ID="btnCaptcha" runat="server" CssClass="btn btn-outline-secondary m-0" Text="Generate new image" />
+                            </div>
+                        </div>
                         <asp:Label ID="lblSignUpError" runat="server" CssClass="text-danger mb-2" Visible="false" />
                         <asp:Button ID="btnSignUp" runat="server" CssClass="btn btn-outline-primary w-100" Text="Create Account" OnClick="btnSignUp_Click" />
                     </div>

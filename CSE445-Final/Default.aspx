@@ -52,7 +52,14 @@
                          <div class="card-body">
                              <h5 class="card-title">How to test application:</h5>
                              <p class="card-text">
-                                 TODO: Add testing instructions here.
+                                 <strong>CAPTCHA Service:</strong> To test the CAPTCHA service, you can try signing 
+                                 up with a new username and password. If you enter the correct CAPTCHA text, the account
+                                 should be created successfully. If you enter the wrong CAPTCHA text, you should see an 
+                                 error message saying the CAPTCHA has failed. You can also click the "Generate new image"
+                                 button to get a new image.
+                             </p>
+                             <p class="card-text">
+                                 TODO: Add more testing instructions for the other services once they are implemented.
                              </p>
                          </div>
                      </div>
