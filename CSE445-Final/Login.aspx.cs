@@ -11,6 +11,7 @@ namespace CSE445_Final
     public partial class Login : System.Web.UI.Page
     {
         private static readonly object FileLock = new object();
+        public static string CurrentUser { get; private set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,6 +42,7 @@ namespace CSE445_Final
 
                     if (string.Equals(storedPassword, inputHash, StringComparison.OrdinalIgnoreCase))
                     {
+                        CurrentUser = username;
                         FormsAuthentication.RedirectFromLoginPage(username, false);
                     }
                     else
