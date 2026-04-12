@@ -135,7 +135,7 @@ namespace CSE445_Final
         }
 
         // Hashes password using SHA256 and returns base64 string
-        private string HashPassword(string password)
+        public static string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
             {
