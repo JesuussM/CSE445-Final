@@ -25,8 +25,54 @@
             </div>
         </nav>
 
+        <!-- Service Directory table -->
         <div class="container-fluid mb-3">
-            <h3>Coming soon...</h3>
+            <div class="card border-info">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Provider</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Parameters</th>
+                                <th scope="col">Return</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">TryIt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">*Member responsible for component*</th>
+                                <td>(WSDL service, RESTful service, DLL function, user control, etc.)</td>
+                                <td>*Operation name*</td>
+                                <td>*Parameters and their types*</td>
+                                <td>*Return type*</td>
+                                <td>*Function description*</td>
+                                <td>*Link to TryIt page*</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">*Member responsible for component*</th>
+                                <td>(WSDL service, RESTful service, DLL function, user control, etc.)</td>
+                                <td>*Operation name*</td>
+                                <td>*Parameters and their types*</td>
+                                <td>*Return type*</td>
+                                <td>*Function description*</td>
+                                <td>*Link to TryIt page*</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">*Member responsible for component*</th>
+                                <td>(WSDL service, RESTful service, DLL function, user control, etc.)</td>
+                                <td>*Operation name*</td>
+                                <td>*Parameters and their types*</td>
+                                <td>*Return type*</td>
+                                <td>*Function description*</td>
+                                <td>*Link to TryIt page*</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </form>
 </body>

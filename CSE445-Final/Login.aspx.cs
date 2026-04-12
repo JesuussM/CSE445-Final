@@ -15,7 +15,7 @@ namespace CSE445_Final
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // If already authenticated, send to default
+            // If already authenticated, send to default page
             if (Request.IsAuthenticated)
             {
                 Response.Redirect(FormsAuthentication.DefaultUrl);
@@ -29,6 +29,7 @@ namespace CSE445_Final
 
             lblLoginError.Visible = false;
 
+            // Check if user is in xml
             string xmlPath = Server.MapPath("~/App_Data/Users.xml");
             if (File.Exists(xmlPath))
             {
@@ -40,6 +41,7 @@ namespace CSE445_Final
                     string storedPassword = (string)user.Element("PasswordHash");
                     string inputHash = HashPassword(password);
 
+                    // If hashes match log in
                     if (string.Equals(storedPassword, inputHash, StringComparison.OrdinalIgnoreCase))
                     {
                         CurrentUser = username;
@@ -74,6 +76,7 @@ namespace CSE445_Final
 
             lblSignUpError.Visible = false;
 
+            // Check for empty fields
             if (string.IsNullOrWhiteSpace(newUser) || string.IsNullOrWhiteSpace(newPass))
             {
                 lblSignUpError.Text = "Username and password are required.";
@@ -88,6 +91,7 @@ namespace CSE445_Final
                 {
                     if (File.Exists(xmlPath))
                     {
+                        // Check if username already exists
                         XDocument doc = XDocument.Load(xmlPath);
                         bool exists = doc.Descendants("User")
                                          .Any(u => string.Equals((string)u.Element("Username"), newUser, StringComparison.OrdinalIgnoreCase));
@@ -105,6 +109,7 @@ namespace CSE445_Final
                             new XElement("Username", newUser),
                             new XElement("PasswordHash", hashed));
 
+                        // Add new user to xml and save
                         doc.Root.Add(user);
                         doc.Save(xmlPath);
 
@@ -124,12 +129,12 @@ namespace CSE445_Final
             }
             catch (Exception ex)
             {
-                // log exception as appropriate; show simple error message
-                lblSignUpError.Text = "Error creating account.";
+                lblSignUpError.Text = ex.Message;
                 lblSignUpError.Visible = true;
             }
         }
 
+        // Hashes password using SHA256 and returns base64 string
         private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
