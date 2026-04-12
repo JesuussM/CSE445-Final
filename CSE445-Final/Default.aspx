@@ -25,66 +25,11 @@
           </div>
         </nav>
 
-        <!-- Sign Up Modal -->
-        <div class="modal fade" id="signUpModal" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Sign Up</h5>
-              </div>
-              <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row mb-3">
-                        <label for="newUsername" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="newUsername" placeholder="Enter username" />
-                    </div>
-                    <div class="row mb-3">
-                        <label for="newPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="newPassword" placeholder="Enter password" />
-                    </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Create Account</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Login Modal -->
-        <div class="modal fade" id="loginModal" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Login</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter username" />
-                    </div>
-                    <div class="row mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter password" />
-                    </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Login</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="container-fluid mb-3">
             <div class="row">
-                <div class="col-8">
+                <div class="col">
                     <!-- Info Card -->
-                    <div class="card text-bg-info h-100">
+                    <div class="card border-info h-100">
                         <div class="card-body">
                             <h5 class="card-title">What does this application offer?</h5>
                             <p class="card-text">
@@ -96,20 +41,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <!-- Sign Up / Login Card -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">How to sign up:</h5>
-                            <p class="card-text">
-                                Users can sign up by clicking the "Sign Up" button below. If users already 
-                                have an account, they can click the "Login" button to sign in.
-                            </p>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</button>
-                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -117,7 +48,7 @@
             <div class="row">
                  <div class="col-12">
                      <!-- Test Card -->
-                     <div class="card">
+                     <div class="card border-warning">
                          <div class="card-body">
                              <h5 class="card-title">How to test application:</h5>
                              <p class="card-text">
