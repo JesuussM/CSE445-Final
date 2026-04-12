@@ -56,7 +56,9 @@
                                  up with a new username and password. If you enter the correct CAPTCHA text, the account
                                  should be created successfully. If you enter the wrong CAPTCHA text, you should see an 
                                  error message saying the CAPTCHA has failed. You can also click the "Generate new image"
-                                 button to get a new image.
+                                 button to get a new image. <strong>Note:</strong> Since you already logged in, cookies are used to bypass 
+                                 the login page the next time you visit the site, so you may need to clear your browser cookies to see
+                                 the login page again and test the CAPTCHA service.
                              </p>
                              <p class="card-text">
                                  TODO: Add more testing instructions for the other services once they are implemented.
