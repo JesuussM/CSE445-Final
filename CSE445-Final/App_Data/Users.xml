@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Users>
+  <User>
+    <!-- Encrypted Hash of 'test' -->
+    <Username>Test</Username>
+    <PasswordHash>n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=</PasswordHash>
+  </User>
+  <User>
+    <!-- Encrypted Hash of 'Cse445!' -->
+    <Username>TA</Username>
+    <PasswordHash>2Fsi8IkPXoLXaWcDcVbyoL93m81EEjvVovp6spmiidY=</PasswordHash>
+  </User>
+  <User>
+    <Username>Jesus</Username>
+    <PasswordHash>7NcYcNGWMxapfjrDQIyYNa2M8PPBvHA1J8MCZVNPda4=</PasswordHash>
+  </User>
+</Users>
