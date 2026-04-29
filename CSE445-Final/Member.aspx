@@ -17,7 +17,6 @@
             <div class="navbar-collapse">
                 <div class="navbar-nav">
                 <asp:HyperLink ID="lnkHome" CssClass="nav-link" Text="Home" NavigateUrl="~/Default.aspx" runat="server" />
-                <asp:HyperLink ID="lnkServiceDirectory" CssClass="nav-link" Text="Service Directory" NavigateUrl="~/ServiceDirectory.aspx" runat="server" />
                 <asp:HyperLink ID="lnkMember" CssClass="nav-link active" Text="Member" NavigateUrl="~/Member.aspx" runat="server" />
                 <asp:HyperLink ID="lnkStaff" CssClass="nav-link" Text="Staff" NavigateUrl="~/Staff.aspx" runat="server" />
                 </div>

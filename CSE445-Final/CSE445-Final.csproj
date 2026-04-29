@@ -85,7 +85,6 @@
     <Content Include="Login.aspx" />
     <Content Include="Member.aspx" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="ServiceDirectory.aspx" />
     <Content Include="Staff.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -127,13 +126,6 @@
       <DependentUpon>Member.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceDirectory.aspx.cs">
-      <DependentUpon>ServiceDirectory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ServiceDirectory.aspx.designer.cs">
-      <DependentUpon>ServiceDirectory.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Staff.aspx.cs">
       <DependentUpon>Staff.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

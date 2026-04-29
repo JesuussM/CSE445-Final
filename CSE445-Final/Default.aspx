@@ -17,7 +17,6 @@
             <div class="navbar-collapse">
               <div class="navbar-nav">
                 <asp:HyperLink ID="lnkHome" CssClass="nav-link active" Text="Home" NavigateUrl="~/Default.aspx" runat="server" />
-                <asp:HyperLink ID="lnkServiceDirectory" CssClass="nav-link" Text="Service Directory" NavigateUrl="~/ServiceDirectory.aspx" runat="server" />
                 <asp:HyperLink ID="lnkMember" CssClass="nav-link" Text="Member" NavigateUrl="~/Member.aspx" runat="server" />
                 <asp:HyperLink ID="lnkStaff" CssClass="nav-link" Text="Staff" NavigateUrl="~/Staff.aspx" runat="server" />
               </div>
@@ -44,11 +43,11 @@
             </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="container-fluid mb-3">
             <div class="row">
                  <div class="col-12">
                      <!-- Test Card -->
-                     <div class="card border-warning">
+                     <div class="card border-success">
                          <div class="card-body">
                              <h5 class="card-title">How to test application:</h5>
                              <p class="card-text">
@@ -63,6 +62,88 @@
                              <p class="card-text">
                                  TODO: Add more testing instructions for the other services once they are implemented.
                              </p>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                 <div class="col-12">
+                     <!-- Component Summary Card -->
+                     <div class="card border-warning">
+                         <div class="card-body">
+                             <h5 class="card-title">Application and Components Summary Table</h5>
+                             <p>Percentage of overall contribution: Jesus Miranda Marquez: 50%, Emilio Valencia Ballesteros: 50%</p>
+                             <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Provider</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Parameters</th>
+                                        <th scope="col">Return</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Resources</th>
+                                        <th scope="col">TryIt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
+                                        <td>Aspx page and User control</td>
+                                        <td>Login.aspx</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>The login page to sign in or create new account along with a captcha. Authentication verification.</td>
+                                        <td>GUI design and C# code behind GUI. Linked to the Default page</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
+                                        <td>Aspx page and User control</td>
+                                        <td>Default.aspx</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>The public Default page that calls and links all other pages.</td>
+                                        <td>GUI design and C# code behind GUI.</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
+                                        <td>Global file</td>
+                                        <td>Global.aspx</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>Application start event handler. Ensures Users.xml file is created and TA account exists.</td>
+                                        <td>C# code as script in Global.asax file.</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
+                                        <td>Restful</td>
+                                        <td>CAPTCHA Service</td>
+                                        <td>Length (string)</td>
+                                        <td>Image (base64 string)</td>
+                                        <td>Image Verifier</td>
+                                        <td>Linked to Login page as a required step to creating an account.</td>
+                                        <td>
+                                            <a href="https://venus.sod.asu.edu/WSRepository/Services/ImageVerifierSvc/TryIt.aspx">TryIt</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
+                                        <td>Aspx page</td>
+                                        <td>ImageProcess.aspx</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>Stores Captcha image</td>
+                                        <td>Linked to Captcha Service and Login page to display captcha image</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                          </div>
                      </div>
                  </div>
