@@ -36,9 +36,15 @@
                                 after entering a zip code, users can see crime stats, natural hazard risks,
                                 and an overall safety score for the area. This can be used by people looking
                                 to move to a new area, or just want to know the risks of their current location.
-                                <br />This application supports two types of users: Members and Staff. Staff users 
+                            </p>
+                            <p class="card-text">
+                                This application supports two types of users: Members and Staff. Staff users 
                                 have the ability to go to the Staff page, while Members do not. Staff users can view a 
                                 list of all users and their role as well as create new Staff users.
+                            </p>
+                            <p class="card-text">
+                                Member users can enter a zipcode and view a list of recent crime data based on the zipcode
+                                entered. As well as an overall safety score and primary hazard.
                             </p>
                         </div>
                     </div>
@@ -62,6 +68,18 @@
                                  the login page the next time you visit the site, so you may need to clear your browser cookies to see
                                  the login page again and test the CAPTCHA service.
                              </p>
+                             <p class="card-text">
+                                <strong>Role-based Access Control:</strong> To test the role-based access control, you can try accessing the Staff page. 
+                                If you are logged in as a staff user, you should be able to access the page and see the list of users as well as create 
+                                new Staff acccounts. If you are logged in as a member user, you should be redirected to the Unauthorized page when trying 
+                                to access the Staff page. You can also try creating a new staff account and then logging in with that account to test the 
+                                staff access.
+                             </p>
+                             <p class="card-text">
+                               <strong>Recent Crime Data:</strong> To test the recent crime data, you can go to the Member page and enter a valid ZIP code. 
+                                You should see a grid with recent crimes in that area. You can try entering different ZIP codes to see how the crime data 
+                                changes based on location.
+                            </p>
                              <p class="card-text">
                                  TODO: Add more testing instructions for the other services once they are implemented.
                              </p>
