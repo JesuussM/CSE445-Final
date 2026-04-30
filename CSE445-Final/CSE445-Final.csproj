@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\CrimeData.csv" />
     <None Include="Connected Services\CAPTCHAService\Service.disco" />
     <None Include="Connected Services\CAPTCHAService\configuration91.svcinfo" />
     <None Include="Connected Services\CAPTCHAService\configuration.svcinfo" />

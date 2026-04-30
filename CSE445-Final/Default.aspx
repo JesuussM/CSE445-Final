@@ -126,6 +126,16 @@
                                     <tr>
                                         <th scope="row">Jesus Miranda</th>
                                         <td>Aspx page and User control</td>
+                                        <td>Member.aspx</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>The members page that allows users to see crime stats based on zip code.</td>
+                                        <td>GUI design and C# code behind GUI.</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
+                                        <td>Aspx page and User control</td>
                                         <td>Unauthorized.aspx</td>
                                         <td>N/A</td>
                                         <td>N/A</td>
@@ -183,6 +193,16 @@
                                         <td>N/A</td>
                                         <td>Stores Captcha image</td>
                                         <td>Linked to Captcha Service and Login page to display captcha image</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
+                                        <td>CSV File</td>
+                                        <td>CrimeData.csv</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>Data file to display recent crimes by zipcode.</td>
+                                        <td>Linked to Member.aspx</td>
                                         <td>N/A</td>
                                     </tr>
                                 </tbody>

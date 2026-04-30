@@ -25,6 +25,7 @@ Jesus Miranda Local Components:
 - User XML (Members.xml & Staff.xml)
 - UI Control (Captcha form on Login page)
 - ImageProcess (ImageProcess.aspx)
+- Recent Crime Data (CrimeData.csv)
 
 Jesus Miranda Remote Service:
 - CAPTCHA Service (Restful)
