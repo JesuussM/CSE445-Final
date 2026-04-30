@@ -13,15 +13,33 @@ namespace CSE445_Final
     {
         private static readonly object FileLock = new object();
 
-        // Ensure the Users.xml file exists on application start
+        // Ensure the Members.xml and Staff.xml files exists on application start
         protected void Application_Start(object sender, EventArgs e)
         {
-            CheckUsersXml();
+            CheckMembersXml();
+            CheckStaffXml();
         }
 
-        private void CheckUsersXml()
+        private void CheckMembersXml()
         {
-            string path = Server.MapPath("~/App_Data/Users.xml");
+            string path = Server.MapPath("~/App_Data/Members.xml");
+            lock (FileLock)
+            {
+                var dir = Path.GetDirectoryName(path);
+                if (!Directory.Exists(dir))
+                    Directory.CreateDirectory(dir);
+                // If file doesn't exist, create it
+                if (!File.Exists(path))
+                {
+                    var doc = new XDocument(new XElement("Members"));
+                    doc.Save(path);
+                }
+            }
+        }
+
+        private void CheckStaffXml()
+        {
+            string path = Server.MapPath("~/App_Data/Staff.xml");
 
             lock (FileLock)
             {
@@ -33,10 +51,10 @@ namespace CSE445_Final
                 if (!File.Exists(path))
                 {
                     var doc = new XDocument(
-                        new XElement("Users",
-                            new XElement("User",
+                        new XElement("Staffs",
+                            new XElement("Staff",
                                 new XElement("Username", "TA"),
-                                new XElement("PasswordHash", Login.HashPassword("Cse445!"))
+                                new XElement("PasswordHash", RoleHelper.HashPassword("Cse445!"))
                             )
                         )
                     );
@@ -46,15 +64,15 @@ namespace CSE445_Final
                 {
                     // If file exists but TA is missing, add it
                     var doc = XDocument.Load(path);
-                    bool adminExists = doc.Descendants("User")
+                    bool adminExists = doc.Descendants("Staff")
                         .Any(u => string.Equals((string)u.Element("Username"), "TA", StringComparison.OrdinalIgnoreCase));
 
                     if (!adminExists)
                     {
                         doc.Root.Add(
-                            new XElement("User",
+                            new XElement("Staff",
                                 new XElement("Username", "TA"),
-                                new XElement("PasswordHash", Login.HashPassword("Cse445!"))
+                                new XElement("PasswordHash", RoleHelper.HashPassword("Cse445!"))
                             )
                         );
                         doc.Save(path);

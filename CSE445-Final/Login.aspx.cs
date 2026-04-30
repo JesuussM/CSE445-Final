@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 using System.Web.Security;
 using System.Xml.Linq;
 
@@ -36,44 +37,81 @@ namespace CSE445_Final
 
             lblLoginError.Visible = false;
 
-            // Check if user is in xml
-            string xmlPath = Server.MapPath("~/App_Data/Users.xml");
-            if (File.Exists(xmlPath))
-            {
-                XDocument doc = XDocument.Load(xmlPath);
-                var user = doc.Descendants("User")
-                              .FirstOrDefault(u => (string)u.Element("Username") == username);
-                if (user != null)
-                {
-                    string storedPassword = (string)user.Element("PasswordHash");
-                    string inputHash = HashPassword(password);
+            // Check if user is in staff.xml
+            string staffPath = Server.MapPath("~/App_Data/Staff.xml");
+            string memberPath = Server.MapPath("~/App_Data/Members.xml");
 
-                    // If hashes match log in
-                    if (string.Equals(storedPassword, inputHash, StringComparison.OrdinalIgnoreCase))
-                    {
-                        CurrentUser = username;
-                        FormsAuthentication.RedirectFromLoginPage(username, false);
-                    }
-                    else
-                    {
-                        lblLoginError.Text = "Incorrect username or password.";
-                        lblLoginError.Visible = true;
-                        return;
-                    }
-                }
-                else
-                {
-                    lblLoginError.Text = "Incorrect username or password.";
-                    lblLoginError.Visible = true;
-                    return;
-                }
-            } 
-            else
+            // Check if at least one of the files exists before trying to read
+            if (!File.Exists(staffPath) && !File.Exists(memberPath))
             {
                 lblLoginError.Text = "Could not find xml file";
                 lblLoginError.Visible = true;
                 return;
             }
+
+            XElement found = null;
+            string foundRole = string.Empty;
+            string storedPassword = null;
+
+            if (File.Exists(staffPath))
+            {
+                var staffDoc = XDocument.Load(staffPath);
+                found = staffDoc.Descendants("Staff")
+                                .FirstOrDefault(u => string.Equals((string)u.Element("Username"), username, StringComparison.OrdinalIgnoreCase));
+                if (found != null)
+                {
+                    foundRole = "Staff";
+                    storedPassword = (string)found.Element("PasswordHash");
+                }
+            }
+
+            if (found == null && File.Exists(memberPath))
+            {
+                var memberDoc = XDocument.Load(memberPath);
+                found = memberDoc.Descendants("Member")
+                                 .FirstOrDefault(u => string.Equals((string)u.Element("Username"), username, StringComparison.OrdinalIgnoreCase));
+                if (found != null)
+                {
+                    foundRole = "Member";
+                    storedPassword = (string)found.Element("PasswordHash");
+                }
+            }
+
+            if (found == null)
+            {
+                lblLoginError.Text = "Incorrect username or password.";
+                lblLoginError.Visible = true;
+                return;
+            }
+
+            string inputHash = RoleHelper.HashPassword(password);
+            if (!string.Equals(storedPassword, inputHash, StringComparison.OrdinalIgnoreCase))
+            {
+                lblLoginError.Text = "Incorrect username or password.";
+                lblLoginError.Visible = true;
+                return;
+            }
+
+            CurrentUser = username;
+            string role = !string.IsNullOrEmpty(foundRole) ? foundRole : RoleHelper.GetUserRole(username);
+
+            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+                1,
+                username,
+                DateTime.Now,
+                DateTime.Now.AddMinutes(30),
+                false,
+                role ?? string.Empty
+            );
+            string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+            var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
+            {
+                HttpOnly = true,
+            };
+            Response.Cookies.Add(authCookie);
+
+            string redirectUrl = FormsAuthentication.GetRedirectUrl(username, false);
+            Response.Redirect(redirectUrl);
         }
 
         protected void btnCaptcha_Click(object sender, EventArgs e)
@@ -107,73 +145,28 @@ namespace CSE445_Final
                 return;
             }
 
-            string xmlPath = Server.MapPath("~/App_Data/Users.xml");
+            if (!Session["generatedString"].Equals(captcha))
+            {
+                lblSignUpError.Text = "CAPTCHA Verification failed.";
+                lblSignUpError.Visible = true;
+                txtCaptcha.Text = "";
+                return;
+            }
+
             try
             {
-                lock (FileLock)
-                {
-                    if (File.Exists(xmlPath))
-                    {
-                        // Check if username already exists
-                        XDocument doc = XDocument.Load(xmlPath);
-                        bool exists = doc.Descendants("User")
-                                         .Any(u => string.Equals((string)u.Element("Username"), newUser, StringComparison.OrdinalIgnoreCase));
-                        
-                        if (exists)
-                        {
-                            lblSignUpError.Text = "Username already exists.";
-                            lblSignUpError.Visible = true;
-                            return;
-                        }
-
-                        if (!Session["generatedString"].Equals(captcha))
-                        {
-                            lblSignUpError.Text = "CAPTCHA Verification failed.";
-                            lblSignUpError.Visible = true;
-                            txtCaptcha.Text = "";
-                            return;
-                        }
-
-                        string hashed = HashPassword(newPass);
-
-                        var user = new XElement("User",
-                            new XElement("Username", newUser),
-                            new XElement("PasswordHash", hashed));
-
-                        // Add new user to xml and save
-                        doc.Root.Add(user);
-                        doc.Save(xmlPath);
-
-                        lblSignUpError.CssClass = "text-success mb-2";
-                        lblSignUpError.Text = "Account created successfully.";
-                        lblSignUpError.Visible = true;
-                        txtNewUser.Text = "";
-                        txtNewPassword.Text = "";
-                        txtCaptcha.Text = "";
-                    }
-                    else
-                    {
-                        lblLoginError.Text = "Could not find xml file";
-                        lblLoginError.Visible = true;
-                        return;
-                    }
-                }
-            }
-            catch (Exception ex)
+                RoleHelper.AddMember(newUser, newPass);
+                lblSignUpError.CssClass = "text-success mb-2";
+                lblSignUpError.Text = "Account created successfully.";
+                lblSignUpError.Visible = true;
+                txtNewUser.Text = "";
+                txtNewPassword.Text = "";
+                txtCaptcha.Text = "";
+            } catch (Exception ex)
             {
                 lblSignUpError.Text = ex.Message;
                 lblSignUpError.Visible = true;
-            }
-        }
-
-        // Hashes password using SHA256 and returns base64 string
-        public static string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = Encoding.UTF8.GetBytes(password);
-                byte[] hash = sha256.ComputeHash(bytes);
-                return Convert.ToBase64String(hash);
+                return;
             }
         }
     }
