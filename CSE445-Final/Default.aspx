@@ -36,6 +36,9 @@
                                 after entering a zip code, users can see crime stats, natural hazard risks,
                                 and an overall safety score for the area. This can be used by people looking
                                 to move to a new area, or just want to know the risks of their current location.
+                                <br />This application supports two types of users: Members and Staff. Staff users 
+                                have the ability to go to the Staff page, while Members do not. Staff users can view a 
+                                list of all users and their role as well as create new Staff users.
                             </p>
                         </div>
                     </div>
@@ -96,7 +99,7 @@
                                         <td>Login.aspx</td>
                                         <td>N/A</td>
                                         <td>N/A</td>
-                                        <td>The login page to sign in or create new account along with a captcha. Authentication verification.</td>
+                                        <td>The login page to sign in or create new member account along with a captcha. Authentication verification.</td>
                                         <td>GUI design and C# code behind GUI. Linked to the Default page</td>
                                         <td>N/A</td>
                                     </tr>
@@ -112,12 +115,52 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Jesus Miranda</th>
+                                        <td>Aspx page and User control</td>
+                                        <td>Staff.aspx</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>The staff page that allows staff users to view registered users and create staff accounts.</td>
+                                        <td>GUI design and C# code behind GUI.</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
+                                        <td>Aspx page and User control</td>
+                                        <td>Unauthorized.aspx</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>The page that displays when an non-staff user trys to access Staff.aspx.</td>
+                                        <td>GUI design. Linked to Staff.aspx</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
                                         <td>Global file</td>
                                         <td>Global.aspx</td>
                                         <td>N/A</td>
                                         <td>N/A</td>
-                                        <td>Application start event handler. Ensures Users.xml file is created and TA account exists.</td>
+                                        <td>Application start event handler. Ensures xml files are created and TA account exists.</td>
                                         <td>C# code as script in Global.asax file.</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
+                                        <td>Helper file</td>
+                                        <td>RoleHelper.cs</td>
+                                        <td>Username/Password</td>
+                                        <td>Role</td>
+                                        <td>Various functions that are able to retrieve info on current User. As well as creating member/staff accounts.</td>
+                                        <td>C# code as script in file. Edits the member.xml/staff.xml files</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jesus Miranda</th>
+                                        <td>User file</td>
+                                        <td>Staff.xml/Members.xml</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>The file to store user acccounts, separated by role.</td>
+                                        <td>XML code in file. Used in RoleHelper.cs</td>
                                         <td>N/A</td>
                                     </tr>
                                     <tr>

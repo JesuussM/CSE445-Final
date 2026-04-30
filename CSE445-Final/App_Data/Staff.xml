@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Staffs>
+  <Staff>
+    <!-- Encrypted Hash of 'Cse445!' -->
+    <Username>TA</Username>
+    <PasswordHash>2Fsi8IkPXoLXaWcDcVbyoL93m81EEjvVovp6spmiidY=</PasswordHash>
+  </Staff>
+  <Staff>
+	 <!-- Encrypted Hash of 'Test!' -->
+    <Username>Admin</Username>
+    <PasswordHash>Uy6qvZV0iA2/drm4zACDLCCm7BE9aCKZVQ16bg80XiU=</PasswordHash>
+  </Staff>
+</Staffs>

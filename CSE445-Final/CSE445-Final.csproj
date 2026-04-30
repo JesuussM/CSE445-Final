@@ -69,7 +69,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Users.xml" />
     <None Include="Connected Services\CAPTCHAService\Service.disco" />
     <None Include="Connected Services\CAPTCHAService\configuration91.svcinfo" />
     <None Include="Connected Services\CAPTCHAService\configuration.svcinfo" />
@@ -77,6 +76,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="App_Data\Staff.xml" />
+    <Content Include="App_Data\Members.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Default.aspx" />
@@ -86,9 +87,11 @@
     <Content Include="Member.aspx" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Staff.aspx" />
+    <Content Include="Unauthorized.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RoleHelper.cs" />
     <Compile Include="Connected Services\CAPTCHAService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -132,6 +135,13 @@
     </Compile>
     <Compile Include="Staff.aspx.designer.cs">
       <DependentUpon>Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Unauthorized.aspx.cs">
+      <DependentUpon>Unauthorized.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Unauthorized.aspx.designer.cs">
+      <DependentUpon>Unauthorized.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Members>
+  <Member>
+    <!-- Encrypted Hash of 'test' -->
+    <Username>Test</Username>
+    <PasswordHash>n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=</PasswordHash>
+  </Member>
+  <Member>
+    <Username>Jesus</Username>
+    <PasswordHash>7NcYcNGWMxapfjrDQIyYNa2M8PPBvHA1J8MCZVNPda4=</PasswordHash>
+  </Member>
+  <Member>
+    <Username>John</Username>
+    <PasswordHash>n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=</PasswordHash>
+  </Member>
+</Members>
